@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: WebStudent
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3305/students
+    password: students
+    username: students
+logging:
+  file:
+    name: application.log
