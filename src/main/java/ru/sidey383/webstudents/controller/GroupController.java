@@ -41,7 +41,7 @@ public class GroupController {
     public PageData<GroupResponse> getGroups(
             @RequestParam(defaultValue = "10", required = false)
             int pageSize,
-            @RequestParam(defaultValue = "1", required = false)
+            @RequestParam(defaultValue = "0", required = false)
             int pageNumber
     ) {
         Page<Group> page = groupRepository.findAll(PageRequest.of(pageNumber, pageSize));

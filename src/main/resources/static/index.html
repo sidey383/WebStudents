@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Groups</title>
+    <link rel="stylesheet" type="text/css" href="default.css">
+    <script type="text/javascript" src="groups.js"></script>
+</head>
+<body>
+<div>
+    <h1>Группы университета</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Количество студентов</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody id = "groups">
+        </tbody>
+    </table>
+    <div class="container">
+        <p id = "pageNum">Page: 1/1</p>
+        <button id = "prev-butt" onclick="prevPage()" style="visibility: hidden">Prev</button>
+        <button id = "next-butt" onclick="nextPage()"  style="visibility: hidden">Next</button>
+    </div>
+</div>
+</body>
+</html>
