@@ -68,10 +68,11 @@ function updateTable(data) {
     const children = [];
     data.forEach(student => {
         var row = document.createElement("tr")
-        var date = row.insertCell()
+        var dateField = row.insertCell()
         var fullName = row.insertCell()
         var action = row.insertCell()
-        date.appendChild(document.createTextNode(student.createTime))
+        const date = new Date(student.createTime)
+        dateField.appendChild(document.createTextNode(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()));
         fullName.appendChild(document.createTextNode(student.fullName))
         var deleteButton = document.createElement('button');
         deleteButton.appendChild(document.createTextNode('Delete'))

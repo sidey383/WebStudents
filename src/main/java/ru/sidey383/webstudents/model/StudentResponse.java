@@ -1,11 +1,11 @@
 package ru.sidey383.webstudents.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record StudentResponse (
         Long id,
         String fullName,
-        LocalDateTime createTime,
+        LocalDate createTime,
         long group
 ) {
 }
