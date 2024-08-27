@@ -34,7 +34,8 @@ public class StudentController {
             @RequestBody
             CreateStudent createGroup
     ) {
-        Group group = groupRepository.findById(createGroup.group()).orElseThrow(() -> new IllegalArgumentException("Can't found group by id"));
+        Group group = groupRepository.findById(createGroup.group())
+                .orElseThrow(() -> new IllegalArgumentException("Can't found group.html by id"));
         Student student = new Student();
         student.setGroup(group);
         student.setFullName(createGroup.fullName());

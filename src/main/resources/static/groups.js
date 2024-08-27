@@ -3,8 +3,8 @@ const groupPath = "/api/group";
 document.addEventListener("DOMContentLoaded", ready);
 
 let pageNumber = 0;
-let pageSize = 2;
-let pageCount = 0
+let pageSize = 20;
+let pageCount = 0;
 
 function ready() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -13,7 +13,6 @@ function ready() {
         pageNumber = numberParam
     }
     updatePage()
-    updateButtons()
 }
 
 function nextPage() {
@@ -40,6 +39,23 @@ function updatePage() {
         })
 }
 
+function createGroup() {
+    const field=  document.getElementById("number-input");
+    const number = field.value;
+    fetch(
+        groupPath,
+        {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: "{\"number\":\"" + number + "\"}"
+        }
+    )
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then(res => res.json())
+        .then(json => window.location.href = "/group/" + json.id)
+        .catch(res => console.log(res))
+}
+
 function updatePageNumberText() {
     const text = document.getElementById("pageNum");
     text.innerText = "Page: " + (pageNumber + 1) + "/" + (pageCount);
@@ -55,11 +71,10 @@ function updateTable(data) {
         var action = row.insertCell()
         number.appendChild(document.createTextNode(group.number))
         studentCount.appendChild(document.createTextNode(group.studentCount))
-        var groupLink = document.createElement('a');
-        var linkText = document.createTextNode('Edit');
-        groupLink.appendChild(linkText)
-        groupLink.href = "/group?id=" + group.id;
-        action.appendChild(groupLink)
+        var editButton = document.createElement('button');
+        editButton.appendChild(document.createTextNode('Edit'));
+        editButton.addEventListener('click', () => window.location.href = "/group/" + group.id);
+        action.appendChild(editButton)
         children.push(row)
     })
     tbody.replaceChildren(...children)
@@ -91,4 +106,19 @@ function getGroups() {
         .then(res => res.ok ? res : Promise.reject(res))
         .then(response => response.json())
         .catch(res => console.log(res))
+}
+
+function createManyGroups() {
+    for (var i = 0; i < 10000; i++) {
+        fetch(
+            groupPath,
+            {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: "{\"number\":\"0-" + i + "\"}"
+            }
+        )
+            .then(res => res.ok ? res : Promise.reject(res))
+            .catch(res => console.log(res))
+    }
 }

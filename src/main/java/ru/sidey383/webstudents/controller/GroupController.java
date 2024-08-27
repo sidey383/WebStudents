@@ -3,6 +3,7 @@ package ru.sidey383.webstudents.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import ru.sidey383.webstudents.entity.Group;
 import ru.sidey383.webstudents.mapper.GroupMapper;
@@ -44,9 +45,20 @@ public class GroupController {
             @RequestParam(defaultValue = "0", required = false)
             int pageNumber
     ) {
-        Page<Group> page = groupRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        Page<Group> page = groupRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, "id"));
         List<GroupResponse> responsesData = page.stream().map(groupMapper::map).toList();
         return new PageData<>(responsesData, page.getSize(), page.getTotalPages(), page.getNumber());
+    }
+
+    @GetMapping(GROUP_ID_PATH)
+    public GroupResponse getGroup(
+            @PathVariable
+            long id
+    ) {
+        return groupMapper.map(
+                groupRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("Can't found group.html by id"))
+        );
     }
 
     @DeleteMapping(GROUP_ID_PATH)

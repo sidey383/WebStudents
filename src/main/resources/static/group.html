@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Группа</title>
+    <link rel="stylesheet" type="text/css" href="../default.css">
+    <script type="text/javascript" src="/students.js"></script>
+</head>
+<body>
+<div>
+    <h1 id="group-name">Группа ...</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Дата принятия</th>
+            <th>ФИО студента</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody id="students">
+        </tbody>
+    </table>
+    <div class="container">
+        <p id="pageNum">Страница: 1/1</p>
+        <button id="prev-butt" onclick="prevPage()" style="visibility: hidden; margin-bottom: 5px">Prev</button>
+        <button id="next-butt" onclick="nextPage()" style="visibility: hidden; margin-bottom: 5px; margin-left: 10px">Next</button>
+    </div>
+    <br/>
+    <div>
+        <label for="fullName" style="margin-bottom: 5px;">ФИО студента</label>
+        <input type="text" id="fullName" style="margin-bottom: 5px; margin-left: 10px"/>
+        <button id="add-butt" onclick="createStudent()" style="margin-bottom: 5px; margin-left: 10px">Добавить студента</button>
+    </div>
+    <button>
+        <a href="/" style="text-decoration:none; color:black">К группам</a>
+    </button>
+</div>
+</body>
+</html>

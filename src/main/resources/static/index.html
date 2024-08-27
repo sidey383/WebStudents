@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Groups</title>
+    <title>Группы</title>
     <link rel="stylesheet" type="text/css" href="default.css">
     <script type="text/javascript" src="groups.js"></script>
 </head>
@@ -21,10 +21,18 @@
         </tbody>
     </table>
     <div class="container">
-        <p id = "pageNum">Page: 1/1</p>
-        <button id = "prev-butt" onclick="prevPage()" style="visibility: hidden">Prev</button>
-        <button id = "next-butt" onclick="nextPage()"  style="visibility: hidden">Next</button>
+        <p id = "pageNum">Страница: 1/1</p>
+        <button id = "prev-butt" onclick="prevPage()" style="visibility: hidden; margin-bottom: 5px">Prev</button>
+        <button id = "next-butt" onclick="nextPage()"  style="visibility: hidden; margin-bottom: 5px; margin-left: 10px">Next</button>
     </div>
+    <div>
+        <label for="number-input" style="margin-bottom: 5px;">Номер группы</label>
+        <input type = "text" id = "number-input" style="margin-bottom: 5px; margin-left: 10px"/>
+        <button id = "add-butt" onclick="createGroup()" style="margin-bottom: 5px; margin-left: 10px">Добавить группу</button>
+    </div>
+    <button onclick="createManyGroups()" style="margin-bottom: 5px; margin-left: 10px">
+        Добавить много групп
+    </button>
 </div>
 </body>
 </html>
