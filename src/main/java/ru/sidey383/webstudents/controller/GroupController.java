@@ -10,7 +10,6 @@ import ru.sidey383.webstudents.mapper.GroupMapper;
 import ru.sidey383.webstudents.model.CreateGroup;
 import ru.sidey383.webstudents.model.GroupResponse;
 import ru.sidey383.webstudents.model.PageData;
-import ru.sidey383.webstudents.model.UpdateGroup;
 import ru.sidey383.webstudents.repository.GroupRepository;
 
 import java.util.List;
@@ -59,24 +58,6 @@ public class GroupController {
                 groupRepository.findById(id)
                         .orElseThrow(() -> new IllegalArgumentException("Can't found group.html by id"))
         );
-    }
-
-    @DeleteMapping(GROUP_ID_PATH)
-    public void deleteGroup(
-            @PathVariable
-            long id
-    ) {
-        groupRepository.deleteById(id);
-    }
-
-    @PatchMapping(GROUP_ID_PATH)
-    public GroupResponse updateGroup(
-            @PathVariable
-            long id,
-            @RequestBody
-            UpdateGroup updateGroup
-    ) {
-        return groupMapper.map(groupRepository.updateNumber(id, updateGroup.number()));
     }
 
 }
